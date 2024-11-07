@@ -32,7 +32,7 @@ public class UserTest {
     	
         user = new User();
         user.setId(1L);
-        user.setUsername("Shahriar1");
+        user.setUsername("Shahriar Kabir");
         user.setPassword("Shahriar123");
         user.setUserEmail("XXXXX@gmail.com");
         user.setRoles(roles);
