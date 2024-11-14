@@ -1,0 +1,62 @@
+Vagrant.configure("2") do |config|
+  config.hostmanager.enabled = true 
+  config.hostmanager.manage_host = true
+  
+### DB vm  ####
+  config.vm.define "db1" do |db1|
+    db1.vm.box = "eurolinux-vagrant/centos-stream-9"
+    db1.vm.box_version = "9.0.43"
+    db1.vm.hostname = "db1"
+    db1.vm.network "private_network", ip: "192.168.56.15"
+    db1.vm.provider "virtualbox" do |vb|
+     vb.memory = "600"
+   end
+
+  end
+  
+### Memcache vm  #### 
+  config.vm.define "mc1" do |mc1|
+    mc1.vm.box = "eurolinux-vagrant/centos-stream-9"
+    mc1.vm.box_version = "9.0.43"
+    mc1.vm.hostname = "mc1"
+    mc1.vm.network "private_network", ip: "192.168.56.14"
+    mc1.vm.provider "virtualbox" do |vb|
+     vb.memory = "600"
+   end
+  end
+  
+### RabbitMQ vm  ####
+  config.vm.define "rbmq1" do |rbmq1|
+    rbmq1.vm.box = "eurolinux-vagrant/centos-stream-9"
+    rbmq1.vm.box_version = "9.0.43"
+    rbmq1.vm.hostname = "rbmq1"
+    rbmq1.vm.network "private_network", ip: "192.168.56.13"
+    rbmq1.vm.provider "virtualbox" do |vb|
+     vb.memory = "600"
+   end
+  end
+  
+### tomcat vm ###
+   config.vm.define "tomcat1" do |tomcat1|
+    tomcat1.vm.box = "eurolinux-vagrant/centos-stream-9"
+    tomcat1.vm.box_version = "9.0.43"
+    tomcat1.vm.hostname = "tomcat1"
+    tomcat1.vm.network "private_network", ip: "192.168.56.12"
+    tomcat1.vm.provider "virtualbox" do |vb|
+     vb.memory = "800"
+   end
+   end
+   
+  
+### Nginx VM ###
+  config.vm.define "nginx1" do |nginx1|
+    nginx1.vm.box = "ubuntu/jammy64"
+    nginx1.vm.hostname = "nginx1"
+  nginx1.vm.network "private_network", ip: "192.168.56.11"
+  nginx1.vm.provider "virtualbox" do |vb|
+     vb.gui = true
+     vb.memory = "800"
+   end
+end
+  
+end
